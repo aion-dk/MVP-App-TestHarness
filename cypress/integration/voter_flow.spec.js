@@ -14,7 +14,8 @@ describe('Voter', () => {
     cy.wait(startupScreenDuration);
 
     cy.get('input[placeholder="First Name"]').type('Zebra');
-    cy.get('input[placeholder="Last Name"]').type('Buffalo');
+    // Special CVR constructed for any name that does not start with A, B or C.
+    cy.get('input[placeholder="Last Name"]').type('Yak');
     cy.contains('Next').click();
     cy.wait(pageTransitionDuration);
     cy.contains('app-ballot-form', 'Welcome Zebra').should('be.visible');
