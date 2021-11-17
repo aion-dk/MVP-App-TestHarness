@@ -27,7 +27,6 @@ export class RequestAccessCodePage implements OnInit {
     // - again directly in this constructor
     // todo: determine the appropriate time for calling that method, and resolve the duplicate calls to a single one
     this.avclientService.initServerURL(environment.url);
-    this.avclientService.initialize();
     this.voterartifactsService.initialize(this.userService.getUser().lastName);
   }
 
@@ -41,7 +40,8 @@ export class RequestAccessCodePage implements OnInit {
 
   async continuebtn() {
     if (this.userService.getUser().lastName !== undefined) {
-      const opaqueVoterId = this.userService.getUser().lastName;
+      // Introduce randomness. Currently no support for voter-restart scenario
+      const opaqueVoterId = environment.production ? Date.now().toString() : this.userService.getUser().lastName;
       await this.avclientService
         .requestAccessCode(opaqueVoterId)
         .then(() => {

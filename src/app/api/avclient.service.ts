@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 
 import { StatuscodeService } from 'src/app/api/statuscode.service';
-import { Receipt } from 'src/app/class/receipt';
 import { VoterartifactsService } from 'src/app/api/voterartifacts.service';
+import { MockClient as MockClient } from './mockclient';
+import { IAVClient, AVClient, CastVoteRecord, BallotBoxReceipt, NistConverter } from '@aion-dk/js-client';
+import { environment } from '../../environments/environment';
 import { UserService } from 'src/app/class/user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AvclientService {
-  cachedAccessCode: any;
   serverURL: any;
+  client: IAVClient;
 
   constructor(
     public statuscodeService: StatuscodeService,
@@ -18,119 +20,51 @@ export class AvclientService {
     private userService: UserService
   ) {}
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  private static convertNIST103ToAvCvr(nistCvr: string): CastVoteRecord {
+    //console.log('Ready to parse NIST CVR', nistCvr);
+    return NistConverter.default.nistCvrToAvCvr(nistCvr);
+  }
+
   initServerURL(bulletinBoardURL) {
     this.serverURL = bulletinBoardURL; // to be used in other constructor/initializer calls
     if (this.userService.getUser() !== undefined) {
       this.voterartifactsService.initialize(this.userService.getUser().lastName);
     } // to be added: other initializer calls included the one deprecated below
+
+    if (environment.production) {
+      this.client = new AVClient(bulletinBoardURL);
+    } else {
+      this.client = new MockClient(this.statuscodeService);
+    }
   }
 
-  initialize() {} // to be deprecated as an external interface
+  async requestAccessCode(opaqueVoterId: string): Promise<void> {
+    await this.client.initialize();
 
-  registerVoter() {} // to be deprecated as an external interface
-
-  requestAccessCode(opaqueVoterId: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      switch (opaqueVoterId) {
-        case 'T0000':
-          reject(new Error(this.statuscodeService.statusCode('VoterRecordNotFound')));
-          break;
-        case 'T0001':
-          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
-          break;
-        default:
-          resolve();
-      }
-    });
+    const email = `us-voter-${opaqueVoterId}@aion.dk`;
+    await this.client.requestAccessCode(opaqueVoterId, email);
   }
 
-  validateAccessCode(code: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this.cachedAccessCode = code;
-      switch (code) {
-        case '00002':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
-          break;
-        case '00003':
-          reject(new Error(this.statuscodeService.statusCode('AccessCodeExpired')));
-          break;
-        case '00004':
-          reject(new Error(this.statuscodeService.statusCode('AccessCodeInvalid')));
-          break;
-        case '00005':
-          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
-          break;
-        default:
-          // to be added: call(s) to other functions related to successfully validated access code
-          resolve();
-      }
-    });
+  async validateAccessCode(code: string): Promise<void> {
+    await this.client.validateAccessCode(code);
+    await this.client.registerVoter();
   }
 
-  // todo: implement placeholder logic and remove the eslint-disable
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  constructBallotCryptograms(cvr: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      switch (this.cachedAccessCode) {
-        case '00006':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
-          break;
-        case '00007':
-          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
-          break;
-        case '00008':
-          reject(new Error(this.statuscodeService.statusCode('CorruptCVRError')));
-          break;
-        default:
-          resolve('zyx098-wvu765-tsr432-1234');
-      }
-    });
+  constructBallotCryptograms(nistCvr: string): Promise<string> {
+    const cvr = AvclientService.convertNIST103ToAvCvr(nistCvr);
+    return this.client.constructBallotCryptograms(cvr);
   }
 
   spoilBallotCryptograms(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      switch (this.cachedAccessCode) {
-        case '00009':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
-          break;
-        case '00010':
-          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
-          break;
-        case '00011':
-          reject(new Error(this.statuscodeService.statusCode('ServerCommitmentError')));
-          break;
-        default:
-          resolve();
-      }
-    });
+    return this.client.spoilBallotCryptograms();
   }
 
-  // todo: implement placeholder logic and remove the eslint-disable
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  submitBallotCryptograms(affidavit: string): Promise<Receipt> {
-    return new Promise((resolve, reject) => {
-      switch (this.cachedAccessCode) {
-        case '00012':
-          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
-          break;
-        case '00013':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
-          break;
-        default:
-          resolve({
-            previousBoardHash: 'tsr432-wvu765-zyx098-4321',
-            boardHash: 'zyx098-wvu765-tsr432-1234',
-            registeredAt: '2020-03-01T10:00:00.000+01:00',
-            serverSignature:
-              // eslint-disable-next-line max-len
-              'dbcce518142b8740a5c911f727f3c02829211a8ddfccabeb89297877e4198bc1,46826ddfccaac9ca105e39c8a2d015098479624c411b4783ca1a3600daf4e8fa',
-            voteSubmissionId: 6,
-          });
-      }
-    });
+  submitBallotCryptograms(affidavit: string): Promise<BallotBoxReceipt> {
+    return this.client.submitBallotCryptograms(affidavit);
   }
 
   purgeData() {
-    delete this.cachedAccessCode;
+    this.client.purgeData();
   }
 }

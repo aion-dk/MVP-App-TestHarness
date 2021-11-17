@@ -144,7 +144,6 @@ export class AccessCodePage implements OnInit {
                 code: this.data,
               },
             ]);
-            this.avclientService.registerVoter();
           })
           .catch((res) => {
             console.log('res', res);

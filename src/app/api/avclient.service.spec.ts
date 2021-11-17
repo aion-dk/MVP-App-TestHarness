@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { UserService } from 'src/app/class/user/user.service';
 import { UserServiceStub } from 'src/app/class/user/user.service.stub';
 import { AvclientService } from './avclient.service';
-import { PRECINCT_1_CVR, PRECINCT_1_AFFIDAVIT } from './artifacts';
+import { PRECINCT_2_CVR, PRECINCT_2_AFFIDAVIT } from './artifacts';
 
 describe('AvclientService', () => {
   let service: AvclientService;
@@ -27,6 +27,7 @@ describe('AvclientService', () => {
     userService.upsertUser({ lastName: 'foo' });
 
     service = TestBed.inject(AvclientService);
+    service.initServerURL('https://random.local/');
   });
 
   describe('requestAccessCode', () => {
@@ -62,19 +63,19 @@ describe('AvclientService', () => {
   describe('constructBallotCryptograms', () => {
     it('should reject 00006', async () => {
       service.validateAccessCode('00006');
-      await expectAsync(service.constructBallotCryptograms(PRECINCT_1_CVR)).toBeRejectedWith(new Error(callOutOfOrder));
+      await expectAsync(service.constructBallotCryptograms(PRECINCT_2_CVR)).toBeRejectedWith(new Error(callOutOfOrder));
     });
     it('should reject 00007', async () => {
       service.validateAccessCode('00007');
-      await expectAsync(service.constructBallotCryptograms(PRECINCT_1_CVR)).toBeRejectedWith(new Error(networkCode));
+      await expectAsync(service.constructBallotCryptograms(PRECINCT_2_CVR)).toBeRejectedWith(new Error(networkCode));
     });
     it('should reject 00008', async () => {
       service.validateAccessCode('00008');
-      await expectAsync(service.constructBallotCryptograms(PRECINCT_1_CVR)).toBeRejectedWith(new Error(corruptCvr));
+      await expectAsync(service.constructBallotCryptograms(PRECINCT_2_CVR)).toBeRejectedWith(new Error(corruptCvr));
     });
     it('should resolve any other acceptable ID', async () => {
       service.validateAccessCode('00009');
-      await expectAsync(service.constructBallotCryptograms(PRECINCT_1_CVR)).toBeResolvedTo('zyx098-wvu765-tsr432-1234');
+      await expectAsync(service.constructBallotCryptograms(PRECINCT_2_CVR)).toBeResolvedTo('zyx098-wvu765-tsr432-1234');
     });
   });
 
@@ -100,22 +101,22 @@ describe('AvclientService', () => {
   describe('submitBallotCryptograms', () => {
     it('should reject 00012', async () => {
       service.validateAccessCode('00012');
-      await expectAsync(service.submitBallotCryptograms(PRECINCT_1_AFFIDAVIT)).toBeRejectedWith(new Error(networkCode));
+      await expectAsync(service.submitBallotCryptograms(PRECINCT_2_AFFIDAVIT)).toBeRejectedWith(new Error(networkCode));
     });
     it('should reject 00013', async () => {
       service.validateAccessCode('00013');
-      await expectAsync(service.submitBallotCryptograms(PRECINCT_1_AFFIDAVIT)).toBeRejectedWith(new Error(callOutOfOrder));
+      await expectAsync(service.submitBallotCryptograms(PRECINCT_2_AFFIDAVIT)).toBeRejectedWith(new Error(callOutOfOrder));
     });
     it('should resolve any other ID', async () => {
       service.validateAccessCode('00014');
-      await expectAsync(service.submitBallotCryptograms(PRECINCT_1_AFFIDAVIT)).toBeResolvedTo({
+      await expectAsync(service.submitBallotCryptograms(PRECINCT_2_AFFIDAVIT)).toBeResolvedTo({
         previousBoardHash: 'tsr432-wvu765-zyx098-4321',
         boardHash: 'zyx098-wvu765-tsr432-1234',
         registeredAt: '2020-03-01T10:00:00.000+01:00',
         serverSignature:
           // eslint-disable-next-line max-len
           'dbcce518142b8740a5c911f727f3c02829211a8ddfccabeb89297877e4198bc1,46826ddfccaac9ca105e39c8a2d015098479624c411b4783ca1a3600daf4e8fa',
-        voteSubmissionId: 6,
+        voteSubmissionId: '6',
       });
     });
   });

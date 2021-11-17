@@ -14,7 +14,7 @@ describe('Voter', () => {
     cy.wait(startupScreenDuration);
 
     cy.get('input[placeholder="First Name"]').type('Zebra');
-    cy.get('input[placeholder="Last Name"]').type('Yak');
+    cy.get('input[placeholder="Last Name"]').type('Buffalo');
     cy.contains('Next').click();
     cy.wait(pageTransitionDuration);
     cy.contains('app-ballot-form', 'Welcome Zebra').should('be.visible');

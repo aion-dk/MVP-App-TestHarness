@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 import {
   PRECINCT_1_CVR,
@@ -13,6 +14,7 @@ import {
   PRECINCT_4_CVR,
   PRECINCT_4_BALLOT,
   PRECINCT_4_AFFIDAVIT,
+  AV_SAMPLE_CVR,
 } from './artifacts';
 
 @Injectable({
@@ -54,7 +56,7 @@ export class VoterartifactsService {
       default:
         this.precinctId = 'precinct_4';
         this.precinct = 'Precinct 4 Spacetown';
-        this.cvrfile = PRECINCT_4_CVR;
+        this.cvrfile = environment.production ? AV_SAMPLE_CVR : PRECINCT_4_CVR;
         this.affidavitfile = PRECINCT_4_AFFIDAVIT;
         this.ballotfile = PRECINCT_4_BALLOT;
         break;
