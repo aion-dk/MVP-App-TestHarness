@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url: 'http://voterreg.tbd.com/',
+  production: true,
+  url: 'http://us-avx:3000/us/app',
 };
 
 /*

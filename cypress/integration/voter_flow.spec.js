@@ -7,8 +7,8 @@ describe('Voter', () => {
 
   it('casts a vote', () => {
     let otpDigits = null;
-    const pageTransitionDuration = 300;
-    const startupScreenDuration = 2000;
+    const pageTransitionDuration = 500;
+    const startupScreenDuration = 500;
 
     cy.visit('/');
     cy.wait(startupScreenDuration);
@@ -35,6 +35,9 @@ describe('Voter', () => {
       cy.wait(1000); // Wait for email to be sent
       cy.request('http://localhost:1080/messages').then((response) => {
         const messages = response.body;
+        if (messages.length == 0) {
+          throw 'Email message with an OTP was not found';
+        }
         const lastMessageId = messages[messages.length - 1].id;
         cy.request(`http://localhost:1080/messages/${lastMessageId}.plain`).then((response) => {
           const message = response.body;
