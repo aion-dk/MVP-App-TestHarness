@@ -85,8 +85,8 @@ describe('Application with all background services', () => {
       })
       .then(() => {
         // One vote is assumed only with a freshly reset AVX database
-        cy.expect(submissionRowCount).to.be.greaterThan(1);
-        cy.expect(voterRegistrationRowCount).to.be.greaterThan(1);
+        cy.expect(submissionRowCount).to.be.equal(1);
+        cy.expect(voterRegistrationRowCount).to.be.equal(1);
       });
   });
 });
