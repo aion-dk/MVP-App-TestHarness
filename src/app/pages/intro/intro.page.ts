@@ -18,10 +18,10 @@ import { Router } from '@angular/router';
 export class IntroPage implements OnInit {
   slideOpts = {
     initialSlide: 0,
-    speed: 100,
+    speed: 50,
     centeredSlides: true,
     autoplay: {
-      delay: 100,
+      delay: 0,
       stopOnLastSlide: true,
     },
     pagination: false,
@@ -38,6 +38,6 @@ export class IntroPage implements OnInit {
   onSlideEnd() {
     setTimeout(() => {
       this.router.navigate(['/ballot']);
-    }, 200);
+    }, 50);
   }
 }
