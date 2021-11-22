@@ -35,56 +35,58 @@ describe('Application with all background services', () => {
     cy.wait(pageTransitionDuration);
     cy.contains('app-access-code', 'Enter Access Code').should('be.visible');
     cy.wait(1000); // Wait for email to be sent
-    return cy.request('http://localhost:1080/messages').then((response) => {
-      const messages = response.body;
-      if (messages.length == 0) {
-        throw 'No email messages were found';
-      }
-      const lastMessageId = messages[messages.length - 1].id;
-      return cy
-        .request(`http://localhost:1080/messages/${lastMessageId}.plain`)
-        .then((response) => {
-          const message = response.body;
-          const otpPattern = /\d{5}/g;
-          const oneTimePassword = otpPattern.exec(message)[0];
-          const otpDigits = oneTimePassword.split('');
-          cy.get('app-access-code input[tabindex="1"]').type(otpDigits[0]);
-          cy.get('app-access-code input[tabindex="2"]').type(otpDigits[1]);
-          cy.get('app-access-code input[tabindex="3"]').type(otpDigits[2]);
-          cy.get('app-access-code input[tabindex="4"]').type(otpDigits[3]);
-          cy.get('app-access-code input[tabindex="5"]').type(otpDigits[4]);
+    return cy
+      .request('http://localhost:1080/messages')
+      .then((response) => {
+        const messages = response.body;
+        if (messages.length == 0) {
+          throw 'No email messages were found';
+        }
+        const lastMessageId = messages[messages.length - 1].id;
+        return cy.request(`http://localhost:1080/messages/${lastMessageId}.plain`);
+      })
+      .then((response) => {
+        const message = response.body;
+        const otpPattern = /\d{5}/g;
+        const oneTimePassword = otpPattern.exec(message)[0];
+        const otpDigits = oneTimePassword.split('');
+        cy.get('app-access-code input[tabindex="1"]').type(otpDigits[0]);
+        cy.get('app-access-code input[tabindex="2"]').type(otpDigits[1]);
+        cy.get('app-access-code input[tabindex="3"]').type(otpDigits[2]);
+        cy.get('app-access-code input[tabindex="4"]').type(otpDigits[3]);
+        cy.get('app-access-code input[tabindex="5"]').type(otpDigits[4]);
 
-          cy.contains('app-access-code ion-button', 'Next').click();
-          cy.wait(pageTransitionDuration);
-          cy.contains('app-before-you-finish', 'Before You Finish').should('be.visible');
+        cy.contains('app-access-code ion-button', 'Next').click();
+        cy.wait(pageTransitionDuration);
+        cy.contains('app-before-you-finish', 'Before You Finish').should('be.visible');
 
-          cy.contains('app-before-you-finish ion-button', 'Next').click();
-          cy.wait(pageTransitionDuration);
-          cy.contains('app-ballot-fingerprint', 'Your Ballot Has Been Sealed and Is Ready To Cast').should('be.visible');
+        cy.contains('app-before-you-finish ion-button', 'Next').click();
+        cy.wait(pageTransitionDuration);
+        cy.contains('app-ballot-fingerprint', 'Your Ballot Has Been Sealed and Is Ready To Cast').should('be.visible');
 
-          cy.contains('app-ballot-fingerprint ion-button', 'Cast Ballot Now').click();
-          cy.wait(pageTransitionDuration);
-          cy.contains('app-sending-confirmation', 'Congrats! Your ballot has been cast!').should('be.visible');
-        })
-        .then(() => {
-          cy.viewport('macbook-11');
-          cy.forceVisit('http://us-avx:3000/us/board/table').then(() => {
-            cy.get('#board-items')
-              .getTable()
-              .each((row) => {
-                if (row.Activity == 'Vote submission') {
-                  submissionRowCount++;
-                } else if (row.Activity == 'Voter configuration') {
-                  voterRegistrationRowCount++;
-                }
-              })
-              .then(() => {
-                // One vote is assumed only with a freshly reset AVX database
-                cy.expect(submissionRowCount).to.equal(1);
-                cy.expect(voterRegistrationRowCount).to.equal(1);
-              });
+        cy.contains('app-ballot-fingerprint ion-button', 'Cast Ballot Now').click();
+        cy.wait(pageTransitionDuration);
+        cy.contains('app-sending-confirmation', 'Congrats! Your ballot has been cast!').should('be.visible');
+
+        cy.viewport('macbook-11');
+        return cy.forceVisit('http://us-avx:3000/us/board/table');
+      })
+      .then(() => {
+        return cy
+          .get('#board-items')
+          .getTable()
+          .each((row) => {
+            if (row.Activity == 'Vote submission') {
+              submissionRowCount++;
+            } else if (row.Activity == 'Voter configuration') {
+              voterRegistrationRowCount++;
+            }
           });
-        });
-    });
+      })
+      .then(() => {
+        // One vote is assumed only with a freshly reset AVX database
+        cy.expect(submissionRowCount).to.be.greaterThan(1);
+        cy.expect(voterRegistrationRowCount).to.be.greaterThan(1);
+      });
   });
 });
