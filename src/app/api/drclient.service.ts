@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { StatuscodeService } from 'src/app/api/statuscode.service';
 import { VoterartifactsService } from 'src/app/api/voterartifacts.service';
-import { MockClient as MockClient } from './mockclient';
 import { UserService } from 'src/app/class/user/user.service';
+import { AVClient } from '@aion-dk/js-client';
 
 // todo: replace anys in favor of real types
 export interface IDigitalReturnClient {
@@ -24,7 +24,7 @@ export interface IDigitalReturnClient {
 })
 export class DrClientService {
   serverURL: any;
-  client: IDigitalReturnClient;
+  client: any;
 
   constructor(
     public statuscodeService: StatuscodeService,
@@ -38,7 +38,7 @@ export class DrClientService {
       this.voterartifactsService.initialize(this.userService.getUser().lastName);
     } // to be added: other initializer calls included the one deprecated below
 
-    this.client = new MockClient(this.statuscodeService);
+    this.client = new AVClient('http://us-avx:3000/dbb/us/api');
   }
 
   async requestAccessCode(opaqueVoterId: string): Promise<void> {
@@ -54,8 +54,9 @@ export class DrClientService {
   }
 
   constructBallot(nistCvr: string): Promise<string> {
-    // todo: handle nist conversion as necessary, for now we just pass the nist CVR
-    return this.client.constructBallot(nistCvr);
+    console.log(nistCvr);
+    const cvr = { 'f7a04384-1458-5911-af38-7e08a46136e7': 'option ref 1', '026ca870-537e-57b2-b313-9bb5d9fbe78b': 'option ref 3' };
+    return this.client.constructBallot(cvr);
   }
 
   spoilBallot(): Promise<string> {

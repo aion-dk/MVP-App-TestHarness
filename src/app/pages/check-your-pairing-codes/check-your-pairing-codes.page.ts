@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DrClientService } from 'src/app/api/drclient.service';
 
 @Component({
   selector: 'app-check-your-pairing-codes',
@@ -11,10 +12,13 @@ export class CheckYourPairingCodesPage implements OnInit {
   getCode: any;
   cvr: any;
 
-  constructor(private route: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private route: Router, private activatedRoute: ActivatedRoute, public drClientService: DrClientService) {}
 
   ngOnInit() {
-    this.getCode = this.activatedRoute.snapshot.paramMap.get('code');
+    this.drClientService.waitForVerifierRegistration().then((verifierCode) => {
+      this.getCode = verifierCode;
+    });
+    // this.getCode = this.activatedRoute.snapshot.paramMap.get('code');
     fetch('./assets/inputFile/input.json')
       .then((res) => res.json())
       .then((json) => {
@@ -23,12 +27,14 @@ export class CheckYourPairingCodesPage implements OnInit {
   }
 
   yesBtn() {
-    this.route.navigate([
-      '/test-results',
-      {
-        code: this.getCode,
-      },
-    ]);
+    this.drClientService.challengeBallot().then(() => {
+      this.route.navigate([
+        '/test-results',
+        {
+          code: this.getCode,
+        },
+      ]);
+    });
   }
 
   tobecontinueBtn() {
