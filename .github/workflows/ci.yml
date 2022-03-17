@@ -1,9 +1,9 @@
 name: mvp-test-harness
 on:
   push:
-    branches: [main]
+    branches: [main, av-floating]
   pull_request:
-    branches: [main]
+    branches: [main, av-floating]
 jobs:
   CI:
     runs-on: ubuntu-latest
@@ -29,9 +29,6 @@ jobs:
       - name: Test
         run: |
           npm run test
-      - name: E2E
-        run: |
-          npm run e2e
       - name: Upload E2E videos
         uses: actions/upload-artifact@master
         if: success()
