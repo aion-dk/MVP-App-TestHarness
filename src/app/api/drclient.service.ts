@@ -72,8 +72,8 @@ export class DrClientService {
     return this.client.castBallot(affidavit);
   }
 
-  challengeBallot(): void {
-    return this.client.challengeBallot();
+  challengeBallot(): Promise<void> {
+    return Promise.resolve(this.client.challengeBallot());
   }
 
   purgeData() {
