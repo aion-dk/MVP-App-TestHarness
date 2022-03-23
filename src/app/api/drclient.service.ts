@@ -55,7 +55,7 @@ export class DrClientService {
 
   constructBallot(nistCvr: string): Promise<string> {
     console.log(nistCvr);
-    const cvr = { 'f7a04384-1458-5911-af38-7e08a46136e7': 'option ref 1', '026ca870-537e-57b2-b313-9bb5d9fbe78b': 'option ref 3' };
+    const cvr = JSON.parse('{"contest ref 1": "option ref 1", "contest ref 2": "option ref 3" }');
     return this.client.constructBallot(cvr);
   }
 

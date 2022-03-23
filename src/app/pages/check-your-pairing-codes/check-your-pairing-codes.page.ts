@@ -18,7 +18,7 @@ export class CheckYourPairingCodesPage implements OnInit {
     this.drClientService.waitForVerifierRegistration().then((verifierCode) => {
       this.getCode = verifierCode;
     });
-    // this.getCode = this.activatedRoute.snapshot.paramMap.get('code');
+
     fetch('./assets/inputFile/input.json')
       .then((res) => res.json())
       .then((json) => {
