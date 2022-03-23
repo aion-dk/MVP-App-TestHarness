@@ -34,11 +34,11 @@ export class BeforeYouFinishPage implements OnInit {
 
     this.drClientService
       .constructBallot(this.cvr)
-      .then(() => {
+      .then((res) => {
         this.route.navigate([
           '/ballot-fingerprint',
           {
-            code: this.getCode,
+            code: res,
           },
         ]);
       })

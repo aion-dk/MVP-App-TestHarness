@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://us-avx:3000/mobile-api/us',
+  url: 'http://us-avx:3000/dbb/us/api',
 };
 
 /*

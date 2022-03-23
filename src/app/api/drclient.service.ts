@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { StatuscodeService } from 'src/app/api/statuscode.service';
 import { VoterartifactsService } from 'src/app/api/voterartifacts.service';
-import { MockClient as MockClient } from './mockclient';
 import { UserService } from 'src/app/class/user/user.service';
+import { AVClient, IAVClient } from '@aion-dk/js-client';
+import { environment } from 'src/environments/environment';
 
 // todo: replace anys in favor of real types
 export interface IDigitalReturnClient {
@@ -24,7 +25,7 @@ export interface IDigitalReturnClient {
 })
 export class DrClientService {
   serverURL: any;
-  client: IDigitalReturnClient;
+  client: IAVClient;
 
   constructor(
     public statuscodeService: StatuscodeService,
@@ -38,7 +39,7 @@ export class DrClientService {
       this.voterartifactsService.initialize(this.userService.getUser().lastName);
     } // to be added: other initializer calls included the one deprecated below
 
-    this.client = new MockClient(this.statuscodeService);
+    this.client = new AVClient(environment.url);
   }
 
   async requestAccessCode(opaqueVoterId: string): Promise<void> {
@@ -54,8 +55,9 @@ export class DrClientService {
   }
 
   constructBallot(nistCvr: string): Promise<string> {
-    // todo: handle nist conversion as necessary, for now we just pass the nist CVR
-    return this.client.constructBallot(nistCvr);
+    console.log(nistCvr);
+    const cvr = JSON.parse('{"contest ref 1": "option ref 1", "contest ref 2": "option ref 3" }');
+    return this.client.constructBallot(cvr);
   }
 
   spoilBallot(): Promise<string> {
@@ -66,12 +68,12 @@ export class DrClientService {
     return this.client.waitForVerifierRegistration();
   }
 
-  castBallot(affidavit: string): Promise<string> {
+  castBallot(affidavit: string): Promise<any> {
     return this.client.castBallot(affidavit);
   }
 
   challengeBallot(): Promise<void> {
-    return this.client.challengeBallot();
+    return Promise.resolve(this.client.challengeBallot());
   }
 
   purgeData() {
