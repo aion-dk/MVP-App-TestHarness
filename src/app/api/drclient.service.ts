@@ -55,9 +55,35 @@ export class DrClientService {
   }
 
   constructBallot(nistCvr: string): Promise<string> {
-    console.log(nistCvr);
-    const cvr = JSON.parse('{"contest ref 1": "option ref 1", "contest ref 2": "option ref 3" }');
-    return this.client.constructBallot(cvr);
+    const parser = new window.DOMParser();
+    const xml = parser.parseFromString(nistCvr, 'application/xml');
+
+    const contestIds: string[] = [];
+    const contestIdNodes = xml.evaluate('//ContestId', xml, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    let i = 0;
+    for (i = 0; i < contestIdNodes.snapshotLength; i++) {
+      const node = contestIdNodes.snapshotItem(i);
+      if (node === null || node.textContent === null) {break;}
+      contestIds.push(node.textContent);
+    }
+
+    const selectionIds: string[] = [];
+    const selectionIdNodes = xml.evaluate('//ContestSelectionId', xml, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    let j = 0;
+    for (j = 0; j < selectionIdNodes.snapshotLength; j++) {
+      const node = selectionIdNodes.snapshotItem(j);
+      if (node === null || node.textContent === null) {break;}
+      selectionIds.push(node.textContent);
+    }
+
+    const serverCVR = {};
+    contestIds.forEach((contestId, idx) => {
+      // @ts-ignore
+      serverCVR[contestId.toString()] = selectionIds[idx];
+    });
+    console.log(serverCVR);
+
+    return this.client.constructBallot(serverCVR);
   }
 
   spoilBallot(): Promise<string> {
