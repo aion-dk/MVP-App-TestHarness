@@ -7,7 +7,7 @@ export const DR_SAMPLE_CVR = `
         <CVRContest>
             <ContestId>ballotmeasure-1</ContestId>
             <CVRContestSelection>
-                <ContestSelectionId> ballotmeasure-1_no</ContestSelectionId>
+                <ContestSelectionId>ballotmeasure-1_no</ContestSelectionId>
                 <SelectionPosition>
                     <HasIndication>yes</HasIndication>
                     <NumberVotes>1</NumberVotes>

@@ -41,7 +41,7 @@ export class RequestAccessCodePage implements OnInit {
   async continuebtn() {
     if (this.userService.getUser().lastName !== undefined) {
       // Introduce randomness. Currently no support for voter-restart scenario
-      const opaqueVoterId = environment.production ? 'A00000000005' : this.userService.getUser().lastName;
+      const opaqueVoterId = environment.production ? 'A00000000006' : this.userService.getUser().lastName;
 
       await this.drClientService
         .requestAccessCode(opaqueVoterId)
