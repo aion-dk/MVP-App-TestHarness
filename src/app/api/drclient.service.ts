@@ -45,7 +45,7 @@ export class DrClientService {
   async requestAccessCode(opaqueVoterId: string): Promise<void> {
     await this.client.initialize();
 
-    const email = 'mvptuser@yahoo.com';
+    const email = 'markitmarchtest@osetinstitute.org';
     await this.client.requestAccessCode(opaqueVoterId, email);
   }
 
@@ -63,7 +63,9 @@ export class DrClientService {
     let i = 0;
     for (i = 0; i < contestIdNodes.snapshotLength; i++) {
       const node = contestIdNodes.snapshotItem(i);
-      if (node === null || node.textContent === null) {break;}
+      if (node === null || node.textContent === null) {
+        break;
+      }
       contestIds.push(node.textContent);
     }
 
@@ -72,7 +74,9 @@ export class DrClientService {
     let j = 0;
     for (j = 0; j < selectionIdNodes.snapshotLength; j++) {
       const node = selectionIdNodes.snapshotItem(j);
-      if (node === null || node.textContent === null) {break;}
+      if (node === null || node.textContent === null) {
+        break;
+      }
       selectionIds.push(node.textContent);
     }
 
@@ -81,7 +85,6 @@ export class DrClientService {
       // @ts-ignore
       serverCVR[contestId.toString()] = selectionIds[idx];
     });
-    console.log(serverCVR);
 
     return this.client.constructBallot(serverCVR);
   }
