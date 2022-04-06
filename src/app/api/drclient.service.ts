@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { StatuscodeService } from 'src/app/api/statuscode.service';
 import { VoterartifactsService } from 'src/app/api/voterartifacts.service';
 import { UserService } from 'src/app/class/user/user.service';
-import { AVClient, IAVClient } from '@aion-dk/js-client';
-import { environment } from 'src/environments/environment';
+import { MockClient } from './mockclient';
 
 // todo: replace anys in favor of real types
 export interface IDigitalReturnClient {
@@ -25,7 +24,7 @@ export interface IDigitalReturnClient {
 })
 export class DrClientService {
   serverURL: any;
-  client: IAVClient;
+  client: IDigitalReturnClient;
 
   constructor(
     public statuscodeService: StatuscodeService,
@@ -39,7 +38,7 @@ export class DrClientService {
       this.voterartifactsService.initialize(this.userService.getUser().lastName);
     } // to be added: other initializer calls included the one deprecated below
 
-    this.client = new AVClient(environment.url);
+    this.client = new MockClient(this.statuscodeService);
   }
 
   async requestAccessCode(opaqueVoterId: string): Promise<void> {
@@ -55,6 +54,7 @@ export class DrClientService {
   }
 
   constructBallot(nistCvr: string): Promise<string> {
+    // Temporary CVR parsing method. Will remain until NIST parsing is better understood
     const parser = new window.DOMParser();
     const xml = parser.parseFromString(nistCvr, 'application/xml');
 

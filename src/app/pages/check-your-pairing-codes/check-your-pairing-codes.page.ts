@@ -15,9 +15,15 @@ export class CheckYourPairingCodesPage implements OnInit {
   constructor(private route: Router, private activatedRoute: ActivatedRoute, public drClientService: DrClientService) {}
 
   ngOnInit() {
-    this.drClientService.waitForVerifierRegistration().then((verifierCode) => {
-      this.getCode = verifierCode;
-    });
+    this.drClientService
+      .waitForVerifierRegistration()
+      .then((verifierCode) => {
+        this.getCode = verifierCode;
+      })
+      .catch((error) => {
+        console.error(error);
+        // It is possible to encounter a 'TimeoutError' here. Direct the voter back to the start of the digital voting flow if this happens
+      });
 
     fetch('./assets/inputFile/input.json')
       .then((res) => res.json())
