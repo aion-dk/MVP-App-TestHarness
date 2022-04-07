@@ -28,7 +28,7 @@ export class TestResultsPage implements OnInit {
       });
   }
 
-  passbtn() {
+  passBtn() {
     this.cvr = this.voterartifactsService.cvr;
     this.drClientService
       .constructBallotCryptograms(this.cvr)
@@ -51,16 +51,7 @@ export class TestResultsPage implements OnInit {
       });
   }
 
-  failbtn() {
-    this.route.navigate(['/ballot-test-failed-test']);
-  }
-
-  backbtn() {
-    this.route.navigate([
-      '/ballot-fingerprint',
-      {
-        code: this.getCode,
-      },
-    ]);
+  cannotSeeBallot() {
+    this.route.navigate(['/cannot-see-ballot']);
   }
 }

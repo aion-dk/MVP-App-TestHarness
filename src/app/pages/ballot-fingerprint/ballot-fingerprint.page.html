@@ -1,28 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <div class="header-position">
+      <h2>{{results.ybr}}</h2>
+      <h4>
+        {{results.bfp}}<br />
+        {{results.zyx098}}
+      </h4>
+    </div>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <div class="list-question">
-    <p>{{results.ybr}}</p>
-  </div>
-  <div class="cen-div-text">
-    <ion-row>
-      {{results.bfp}}<br />
-      {{results.zyx098}}
-    </ion-row>
-    <p>{{results.ydn}}</p>
-    <ion-button color="dark" (click)="copybtn()">
-      {{results.copy}}
-      <ion-icon slot="end" name="settings-outline"></ion-icon>
-    </ion-button>
-    <p>{{results.tv3_fb}}</p>
-    <p>{{results.link}}</p>
-  </div>
-  <div class="bottom-div-text">
-    <p>{{results.tv_fp}}</p>
-    <ion-button color="dark" (click)="sendbtn()">
-      {{results.send}}
-      <ion-icon slot="end" name="paper-plane-outline"></ion-icon>
-    </ion-button>
-  </div>
+  <h3>{{results.first_para_text_bfp}}</h3>
+  <ion-button class="ballot-btns" color="dark" (click)="sendbtn()">
+    {{results.send}}
+    <ion-icon slot="end" name="paper-plane-outline"></ion-icon>
+  </ion-button>
+  <h3>{{results.ydn}}</h3>
+  <h3>{{results.second_para_text}}</h3>
+  <ion-button class="colorDarkBlue ballot-btns" (click)="copybtn()">
+    {{results.copy}}
+    <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+  </ion-button>
+  <h3>
+    {{results.tv4}}
+    <br />
+    {{results.report}}
+  </h3>
+  <ion-button color="danger" class="ballot-btns" (click)="rpbtn()">
+    {{results.rap}}
+    <ion-icon slot="end" name="help-outline"></ion-icon>
+  </ion-button>
+
+  <h3>{{results.tv3_fb}}<br />{{results.link}}</h3>
 </ion-content>
-<ion-footer>
-  <ion-toolbar> </ion-toolbar>
-</ion-footer>

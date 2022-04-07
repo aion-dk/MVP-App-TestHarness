@@ -1,20 +1,20 @@
 <ion-content class="ion-padding">
   <div class="ion-text-center mt60">
-    <ion-card-title>{{results.welcome}} {{ paramData?.firstName }}!</ion-card-title>
+    <ion-card-title><h1>{{results.welcome}} {{ paramData?.firstName }}!</h1></ion-card-title>
   </div>
   <div class="ion-text-center sub-title">
     <p>{{ precinct }}</p>
   </div>
   <div class="ion-text-center mt60">
-    <p>
+    <h3>
       {{results.precinct_no}}{{precinctNum}}<br />{{results.please}}<b>{{results.start}}</b>
       {{results.your_ballot_marking}}
-    </p>
+    </h3>
   </div>
   <ion-grid class="ion-no-padding mt60">
     <ion-row class="mt100 ion-text-center">
       <ion-col size="12">
-        <ion-button (click)="goToComplete()" class="main-btn-style" color="primary">{{results.start}}</ion-button>
+        <ion-button (click)="goToComplete()" class="main-btn-style" color="dark">{{results.start}}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

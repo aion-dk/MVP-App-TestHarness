@@ -1,21 +1,21 @@
 <ion-content class="ion-padding">
   <div class="ion-text-center mt60">
-    <ion-card-title>{{results.printing}}</ion-card-title>
+    <h1>{{results.printing}}</h1>
   </div>
   <div class="ion-text-center sub-title">
-    <p>{{results.ydp}}</p>
+    <h3>{{results.ydp}}</h3>
   </div>
   <div class="mt60">
-    <p>{{results.dt}} <b>{{results.finish}}</b> {{results.btn}} <b>{{results.re_try}}</b> {{results.pa}}</p>
+    <h4>{{results.dt}} <b>{{results.finish}}</b> {{results.btn}} <b>{{results.re_try}}</b> {{results.pa}}</h4>
   </div>
   <ion-grid class="ion-no-padding mt60">
     <ion-row class="mt100 ion-text-center">
       <ion-col size="12">
-        <ion-button (click)="goToBallot()" class="main-btn-style" color="primary">{{results.finish}}</ion-button>
+        <ion-button (click)="goToBallot()" class="main-btn-style" color="dark">{{results.finish}}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div class="mt30 ion-text-center">
-    <ion-button (click)="goToRetry()" class="main-btn-style" color="primary" fill="clear">{{results.re_try}} </ion-button>
+    <ion-button (click)="goToRetry()" class="main-btn-style" color="danger" fill="clear">{{results.re_try}} </ion-button>
   </div>
 </ion-content>

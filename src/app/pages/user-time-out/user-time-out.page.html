@@ -1,17 +1,19 @@
 <ion-content>
-  <div class="Required-div">
-    <p>{{results.d_text}}</p>
-    <p>{{results.d_text1}}</p>
-
-    <p>{{results.link}}</p>
+  <div class="error-page">
+    <h3>{{results.d_text}}</h3>
+    <h3>{{results.d_text1}}</h3>
+    <div><a href="{{results.link}}">{{results.link}}</a></div>
   </div>
 </ion-content>
-
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-button color="dark" (click)="backbtn()">
-      {{results.back}}
-      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-    </ion-button>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row>
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" (click)="backbtn()">
+          {{results.back}}
+          <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-footer>

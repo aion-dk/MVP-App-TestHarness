@@ -1,41 +1,43 @@
-<ion-content>
-  <div class="list-question">
-    <p>{{results.test_results}}</p>
-  </div>
-  <div class="cen-div-text">
-    <ion-row>
-      {{results.bfp}}<br />
-      {{results.zyx098}}
-    </ion-row>
-    <p>{{results.ydn}}</p>
-    <p>{{results.tv2_fb}}"{{results.str}}"{{results.tv2_fb1}}</p>
-    <p>{{results.tv3}}</p>
-  </div>
-  <div class="Required-div" style="text-align: center">
-    <div style="text-align: center">
-      <div class="div-two">
-        <div class="div-text-mid" (click)="passbtn()">
-          <p>{{results.passed}}</p>
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-        </div>
-      </div>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <div class="header-position">
+      <h1>{{results.test_results}}</h1>
+      <h4>{{results.bfp}}<br />{{results.zyx098}}</h4>
     </div>
-    <div class="div-text-mid" (click)="failbtn()">
-      <p>{{results.failed}}</p>
-      <ion-icon name="close-circle-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>
+    <h3>{{results.ydn}}</h3>
+    <h3>{{results.tv3}}</h3>
+  </div>
+  <br />
+  <div>
+    <ion-row class="ion-footer-row">
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" (click)="cannotSeeBallot()">
+          {{results.failed}}
+          <ion-icon class="margin5" name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-right-col">
+        <ion-button color="dark" (click)="passBtn()">
+          {{results.passed}}
+          <ion-icon class="margin5" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <div>
+      <div class="add-question">
+        <ion-row (click)="cannotSeeBallot()">
+          <ion-col size="3" class="question-icon">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="9" class="question-text">
+            <h4>{{results.ids}}</h4>
+          </ion-col>
+        </ion-row>
+      </div>
     </div>
   </div>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-row>
-      <ion-col size="6" class="back-btn">
-        <ion-button color="dark" (click)="backbtn()">
-          {{results.back}}
-          <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col size="6" class="next-btn"> </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>

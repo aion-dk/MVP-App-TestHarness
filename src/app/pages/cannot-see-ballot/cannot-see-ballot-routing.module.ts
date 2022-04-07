@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NetworkErrorRequestCodePage } from './network-error-request-code.page';
+import { CannotSeeBallotPage } from './cannot-see-ballot.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NetworkErrorRequestCodePage,
+    component: CannotSeeBallotPage,
   },
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class NetworkErrorRequestCodePageRoutingModule {}
+export class CannotSeeBallotPageRoutingModule {}

@@ -22,10 +22,8 @@
 
     "ballot_comp": {
       "thank_you": "Thank you",
-      "your_ballot_is_complete": "Your ballot is complete",
       "choose_a_return": "Choose A Return",
-      "physical_return": "Physical Return",
-      "requires_printer": "Requires a Printer",
+      "physical_return": "Physical Return. This option requires a printer.",
       "online_ballot_return": "Digital Return"
     },
 
@@ -53,16 +51,21 @@
       "ybr": "Your Ballot Is Sealed",
       "bfp": "Ballot Checking Code:",
       "zyx098": "zyx098-wvu765-tsr432-1234",
-      "ydn": "To check your ballot, go to VerifyMyBallot.gov and enter the Ballot Checking Code displayed above. After you enter the code, tap the Code Entered button below.",
+      "first_para_text_bfp": "Submit your ballot now, or perform a ballot check using the instructions below.",
+      "ydn": "To check your ballot, go to VerifyMyBallot.gov and enter the Ballot Checking Code displayed above. ",
+      "second_para_text": "After you enter the code, tap the Code Entered button below.",
+      "tv4": "Trouble entering the code?",
+      "report": "Report a problem below.",
       "copy": "Code Entered ",
-      "tv3_fb": "For more information on testing, click the link below.",
-      "link": "www.linkto.site.org",
+      "tv3_fb": "For more information on ballot checking, visit",
+      "link": "electionwebsite.gov",
       "tv_fp": "Or, you can cast your ballot digitally now.",
-      "send": "Cast Ballot Now",
+      "send": "Submit Ballot Now",
       "shmd": "Show more details",
       "tv1_fp": " On a computer or other device,go to",
-      "tv2_fb": "and enter  the  following code to review your ballot",
-      "mp": "My Progress"
+      "tv2_fb": "and enter the following code to review your ballot",
+      "mp": "My Progress",
+      "rap": "Report A Problem"
     },
 
     "copy_confirm": {
@@ -80,10 +83,8 @@
       "bfp": "Ballot Checking Code:",
       "zyx098": "zyx098-wvu765-tsr432-1234",
       "ydn": "Your ballot was unsealed and is now displayed on the VerifyMyBallot site. Review to confirm your choices are all correct.",
-      "tv2_fb": "If you did first use a Verify  My Ballot site, before you  selected  ",
-      "str": "Start Ballot Test",
-      "tv2_fb1": "then you should re-try the  test using the Re-Try option below.",
       "tv3": "Does everything look correct?",
+      "ids": "I don't see my ballot?",
       "passed": "Yes",
       "failed": "No",
       "next": "Next",
@@ -91,22 +92,15 @@
     },
 
     "ballot_resealed_page": {
-      "test_results": "Ballot Check Complete",
-      "ydn": "Your ballot is being digitally sealed again. You can perform the check again or submit your ballot.",
+      "test_results": "Ballot Check Complete!",
+      "ydn": "Your ballot is being digitally sealed again.",
+      "ycp": "You can perform the check again or submit your ballot.",
       "next": "Continue"
     },
 
-    "code_invalid_access00004_error": {
-      "try_again": "Try again",
-      "btn_report": "Report A problem",
-      "print": "Print",
-      "www_link": "www.linktosite.org",
-      "auth_p_1": " Sorry, your access code did not work. Please try again, or click the link below for help. ",
-      "auth_p_2": "You can also click the print button below to proceed with a physical return instead."
-    },
     "ballot_test_faild_test_page": {
-      "first_para": "Sorry to hear that. Your  ballot will be discarded. ",
-      "sec_para": "  Would you like to mark a new ballot or request a ballot be mailed to you?",
+      "first_para": "Sorry to hear that. Your ballot will be discarded. ",
+      "sec_para": " Would you like to mark a new ballot or request a ballot be mailed to you?",
       "fist_btn": "Mark a new ballot",
       "sec_btn": " request new ballot"
     },
@@ -121,7 +115,7 @@
       "heading": "Your Ballot Is Ready",
       "text": "You can send it digitally now.",
       "send": "send",
-      "text_detail": "  Or if you like, you may perform a technical test to verify your ballot fingerprint. To do so, copy the ballot fingerprint below, and paste into your external validator of choice.",
+      "text_detail": " Or if you like, you may perform a technical test to verify your ballot fingerprint. To do so, copy the ballot fingerprint below, and paste into your external validator of choice.",
       "copy": "Copy",
       "nbf": "New Ballot Fingerprint:",
       "tsr432": "tsr432-wvu765-zyx098-4321"
@@ -140,15 +134,6 @@
       "text2": " We are sorry for the inconvenience!",
       "link": "www.linktosite.gov ",
       "try_again": "Try again"
-    },
-
-    "check_network_oooo_error_page": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
-      "try_again": "Try again",
-      "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
-      "sec_para": " You can also click the print button below to proceed with a physical return instead.",
-      "rbtn": "report a problem",
-      "print": "Print"
     },
 
     "sending_confirmation_page": {
@@ -174,7 +159,7 @@
     },
 
     "rap_page": {
-      "para": "To use digital return, touch  Next to request a one-time access code to be sent to your email address.",
+      "para": "To use digital return, touch Next to request a one-time access code to be sent to your email address.",
       "para_center": "If you did not receive a code upon requesting, please check the email we have on file by following the link below.",
       "next": "Next",
       "back": "Back",
@@ -185,7 +170,7 @@
       "upr_para": "Something went wrong, and we can't complete the preparation of your digital ballot. ",
       "mid_para": "You can report a problem, and you have the option of using the Print button below to print your ballot and affidavit for physical return. ",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
@@ -194,7 +179,7 @@
       "upr_para": "Something went wrong, and we can't complete the preparation of your digital ballot. ",
       "mid_para": "You can report a problem, and you have the option of using the Print button below to print your ballot and affidavit for physical return. ",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
@@ -243,7 +228,7 @@
     "ballot_test_failed_page": {
       "upr_para": "Sorry to hear that. We do not recommend you use this voting app. You can report a problem and contact your election administrator for additional options.",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print"
     },
 
@@ -254,7 +239,6 @@
       "print": "Print"
     },
     "check_network_request00001_error": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "try_again": "Try again",
       "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "sec_para": " You can also click the print button below to proceed with a physical return instead.",
@@ -277,9 +261,15 @@
       "rbtn": "report a problem",
       "btn": "Request"
     },
-
+    "code_invalid_access00004_error": {
+      "try_again": "Try again",
+      "btn_report": "Report A problem",
+      "print": "Print",
+      "www_link": "www.linktosite.org",
+      "auth_p_1": " Sorry, your access code did not work. Please try again, or click the link below for help. ",
+      "auth_p_2": "You can also click the print button below to proceed with a physical return instead."
+    },
     "check_network_access00005_error": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "try_again": "Try again",
       "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "sec_para": " You can also click the print button below to proceed with a physical return instead.",
@@ -291,13 +281,12 @@
       "upr_para": "Something went wrong. You will not be able to submit your ballot digitally at this time.",
       "mid_para": "You can report a problem and use the Print button below to print your ballot for physical return.",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
 
     "check_network_construct00007_error": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "try_again": "Try again",
       "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "sec_para": "You can report a problem, and you can print your ballot and use physical return by tapping the print button below.",
@@ -308,7 +297,7 @@
     "corrupt_cv_construct00008_error": {
       "upr_para": "Your local election office has been notified to issue you a replacement ballot by mail. For more information, you may contact your election office through the link below. ",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
@@ -317,12 +306,11 @@
       "upr_para": "Something went wrong, and we can't complete the preparation of your digital ballot. ",
       "mid_para": "You can report a problem, and you have the option of using the Print button below to print your ballot and affidavit for physical return. ",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
     "check_network_spoil00010_error": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "try_again": "Try again",
       "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "sec_para": " You can also click the print button below to proceed with a physical return instead.",
@@ -336,12 +324,11 @@
       "test_pr": "You can also click the print button below to proceed with a physical return instead.",
       "link": "www.linktosite.gov ",
       "try_again": "Try again",
-      "report_prob": "Report  A Problem",
+      "report_prob": "Report A Problem",
       "print": "Print"
     },
 
     "check_network_submit00012_error": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "try_again": "Try again",
       "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
       "sec_para": " You can also click the print button below to proceed with a physical return instead.",
@@ -352,18 +339,17 @@
       "upr_para": "Something went wrong, and we can't complete the preparation of your digital ballot. ",
       "mid_para": "You can report a problem, and you have the option of using the Print button below to print your ballot and affidavit for physical return. ",
       "link": "www.linktosite.org",
-      "back": "Report  A Problem",
+      "back": "Report A Problem",
       "print": "Print",
       "try_again": "Try Again"
     },
 
-    "network_error_request_code_page": {
-      "text": " Sorry, it seems there was a network error. Please check your connection and try again.",
-      "try_again": "Try again",
-      "first_para": " Sorry, it seems there was a network error. Please check your connection and try again.",
-      "sec_para": " You can also click the print button below to proceed with a physical return instead.",
-      "rbtn": "report a problem",
-      "print": "Print"
+    "cannot_see_ballot_page": {
+      "first_csb_text": "It looks like you didn't enter the ballot checking code in the VerifyMyBallot site.",
+      "second_csb_text": "Tap Retry to try again. Be sure to enter the code into the VerifyMyBallot site before you tap the Code Entered button in this app.",
+      "third_csb_text": "You can review the step-by-step instructions at",
+      "link_csb": "electionwebsite.gov",
+      "back_btn_csb": "retry"
     },
 
     "provide_information": "Provide Information",

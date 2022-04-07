@@ -1,23 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <h1 class="header-position">{{results.copy_confirmed}}</h1>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <div class="list-question">
-    <p>{{results.copy_confirmed}}</p>
-  </div>
-  <div class="Required-div">
-    <p>{{results.yccm}}</p>
-    <p>{{results.yccm1}}</p>
-    {{results.yccm2}}
+  <div class="error-page">
+    <h2>{{results.yccm}}</h2>
+    <h3>{{results.yccm1}}</h3>
+    <h4>{{results.yccm2}}</h4>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
     <ion-row>
-      <ion-col size="6" class="back-btn">
-        <ion-button color="dark" (click)="backbtn()">
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" (click)="backbtn()">
           {{results.back}}
           <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="next-btn">
+      <ion-col size="6" class="ion-right-col">
         <ion-button color="dark" (click)="nextbtn()">
           {{results.next}}
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>

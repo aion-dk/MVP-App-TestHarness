@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CannotSeeBallotPage } from './cannot-see-ballot.page';
 
-import { CheckNetworkOOOOErrorPage } from './check-network-oooo-error.page';
-
-describe('CheckNetworkOOOOErrorPage', () => {
-  let component: CheckNetworkOOOOErrorPage;
-  let fixture: ComponentFixture<CheckNetworkOOOOErrorPage>;
+describe('CannotSeeBallotPage', () => {
+  let component: CannotSeeBallotPage;
+  let fixture: ComponentFixture<CannotSeeBallotPage>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [CheckNetworkOOOOErrorPage],
+        declarations: [CannotSeeBallotPage],
         imports: [IonicModule.forRoot(), RouterTestingModule],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(CheckNetworkOOOOErrorPage);
+      fixture = TestBed.createComponent(CannotSeeBallotPage);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })

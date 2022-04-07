@@ -1,16 +1,16 @@
 <ion-content class="ion-padding">
   <div class="ion-text-center mt60">
-    <ion-card-title>{{results.welcome_to_jetsons_ballot}}</ion-card-title>
+    <ion-card-title><h1>{{results.welcome_to_jetsons_ballot}}</h1></ion-card-title>
   </div>
   <div class="ion-text-center">
-    <p>{{results.to_get_started}}</p>
+    <h3>{{results.to_get_started}}</h3>
   </div>
   <ion-grid class="ion-no-padding mt60">
     <form [formGroup]="signupForm" (ngSubmit)="submitForm()" novalidate>
       <ion-row>
         <ion-col size="6">
           <ion-item lines="none">
-            <ion-label position="stacked">{{results.first_name}}</ion-label>
+            <ion-label position="stacked"><h5>{{results.first_name}}</h5></ion-label>
             <ion-input formControlName="firstName" type="text" placeholder="{{results.first_name}}" required clearInput> </ion-input>
           </ion-item>
 
@@ -23,7 +23,7 @@
         </ion-col>
         <ion-col size="6">
           <ion-item lines="none">
-            <ion-label position="stacked">{{results.last_name}}</ion-label>
+            <ion-label position="stacked"><h5>{{results.last_name}}</h5></ion-label>
             <ion-input formControlName="lastName" type="text" placeholder="{{results.last_name}}" required clearInput> </ion-input>
           </ion-item>
 
@@ -37,7 +37,7 @@
       </ion-row>
       <ion-row class="mt100 ion-text-center">
         <ion-col size="12">
-          <ion-button type="submit" class="main-btn-style" color="primary"> {{results.next}}</ion-button>
+          <ion-button type="submit" class="main-btn-style" color="dark"> {{results.next}}</ion-button>
         </ion-col>
       </ion-row>
     </form>

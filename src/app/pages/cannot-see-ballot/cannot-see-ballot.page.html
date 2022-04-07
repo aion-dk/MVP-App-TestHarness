@@ -1,0 +1,20 @@
+<ion-content>
+  <div class="cannot-see-ballot-css">
+    <h3>{{results.first_csb_text}}</h3>
+    <h3>{{results.second_csb_text}}</h3>
+    <h3>{{results.third_csb_text}} <br />{{results.link_csb}}</h3>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row>
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" (click)="backbtn()">
+          {{results.back_btn_csb}}
+          <ion-icon slot="start" name="sync-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-right-col"> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

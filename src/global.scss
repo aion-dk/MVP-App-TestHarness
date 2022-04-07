@@ -25,6 +25,400 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
+ion-content {
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+  --padding-top: 20px;
+}
+.nonepadding {
+  --padding-bottom: 0px;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --padding-top: 0px;
+}
+// -------------header-section----------------------------
+.header-backgrond-color {
+  --background: #ffffff;
+}
+ion-header {
+  ion-toolbar {
+    --border-style: none;
+  }
+}
+
+.header-text {
+  font-family: museo slab;
+  font-size: 32px;
+  color: #807f74;
+  font-weight: bolder;
+  margin: 15px 20px;
+  text-align: start;
+}
+.header-position {
+  margin: 0;
+  padding-top: 20px;
+  border-bottom: 2px solid gray;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+}
+// --------------end-header-section-----------------------
+// --------------footer-sections----------------------------
+
+ion-footer {
+  ion-toolbar {
+    ion-row {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 20px;
+      padding-left: 20px;
+
+      .ion-btn-size {
+        width: 125px;
+      }
+    }
+  }
+}
+ion-col {
+  padding: 0;
+}
+.ion-right-col {
+  text-align: end;
+}
+.ion-center-col {
+  text-align: center;
+}
+.ion-left-col {
+  text-align: start;
+}
+.ion-continue-button {
+  width: 125px;
+}
+ion-button {
+  margin: 0;
+}
+.finger-signature-footer {
+  padding-bottom: 0;
+}
+.iontoolbar {
+  padding-left: 20px;
+
+  p {
+    font-size: 13px;
+    color: #00000080;
+    font-weight: 700;
+  }
+}
+.temporary-finished-btn {
+  width: 103px;
+}
+.request-access-btn {
+  width: 115px;
+}
+.try-again {
+  width: 125px;
+}
+// ---------------end-footer-sections-----------------------
+// -----------------error-pages---------------------------
+.error-page {
+  h3 {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+}
+
+// ---------------ion-content-text-css--------------------
+
+.div-text-positions {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+// --------------------------h1-tag-css-----------------
+h1 {
+  font-size: 34px;
+  color: #c32032;
+  font-family: 'museo-1000';
+}
+// --------------------------h2-tag-css-----------------
+h2 {
+  font-size: 24px;
+  color: #c32032;
+  font-family: 'museo-700';
+}
+// --------------------------h3-tag-css-----------------
+h3 {
+  font-size: 18px;
+  color: #232c67;
+  font-weight: bold;
+  font-family: 'Trebuchet-bold';
+}
+// --------------------------h4-tag-css-----------------
+h4 {
+  font-size: 18px;
+  color: #807f74;
+  font-family: 'Trebuchet_MS';
+}
+// --------------------------h5-tag-css-----------------
+h5 {
+  font-size: 12px;
+  color: #232c67;
+  font-family: 'Trebuchet_MS';
+}
+// -------------------------div-tag-css-----------------
+div {
+  font-size: 16px;
+  color: #7e7e7a;
+  font-family: 'Trebuchet-italic';
+}
+// ------------------------h3-button-css-------------
+.h3-btn {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Trebuchet-bold';
+}
+a {
+  background-color: transparent;
+  color: #232c67;
+}
+
+// ---------------------------intro-page-css-------------------------------
+ion-slides {
+  height: 100%;
+  background: rgb(37, 170, 226);
+  background: linear-gradient(0deg, rgba(37, 170, 226, 1) 0%, rgba(37, 170, 226, 1) 50%, rgba(13, 118, 188, 1) 100%);
+}
+// --------------------------ballot-page-css---------------------------
+.mt60 {
+  margin-top: 60px;
+}
+.ion-text-center {
+  text-align: center !important;
+}
+
+ion-input {
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  --padding-start: 10px !important;
+  margin-top: 8px;
+  --font-family: 'Trebuchet_MS';
+}
+
+.err-messages {
+  margin-left: 20px;
+
+  .error {
+    color: var(--ion-color-danger);
+    padding: 0;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt100 {
+  margin-top: 100px;
+}
+
+.main-btn-style {
+  --border-radius: 0;
+  height: 50px;
+  width: 180px;
+  font-size: 20px;
+}
+// ------------------------------------ballot-complete-page----------------------------
+.upr-text {
+  text-align: center;
+}
+.list-question {
+  .lineboader {
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+}
+.bottom-div-text {
+  text-align: center;
+  font-size: 85px;
+}
+
+.cen-div-text {
+  text-align: center;
+  font-size: 85px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+// -------------------------access-code-page-------------------------------
+input {
+  background: none;
+  outline: none;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border: none;
+}
+.center-div {
+  text-align: center;
+}
+.opt-box-area {
+  justify-content: left;
+  align-items: center;
+  margin-left: 0%;
+  .nk-otp-box {
+    height: 50px;
+    width: 11vw;
+    margin: 9px;
+    font-size: 18px;
+    color: #000000;
+    font-family: 'Roboto Regular';
+    text-align: center;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-bottom: 1px solid #040404;
+    border-radius: 0px;
+    opacity: 1;
+  }
+  .nk-otp-box-first {
+    height: 50px;
+    width: 11vw;
+    margin: 9px 9px 9px 0px;
+    font-size: 18px;
+    color: #000000;
+    font-family: 'Roboto Regular';
+    text-align: center;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-bottom: 1px solid #111213d1;
+    border-radius: 0px;
+    opacity: 1;
+  }
+  .nk-otp-box:focus {
+    border: 1px solid #8a6ddc;
+    outline: none;
+    box-shadow: 0px 1px 2px;
+  }
+}
+.incorrect-otp {
+  text-align: left;
+  font-family: 'Roboto';
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #d92212;
+  opacity: 1;
+}
+.time {
+  margin-top: 5vh;
+  text-align: left;
+  font-family: 'Roboto';
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  font-size: 16px;
+  height: 20px;
+}
+.receive-otp {
+  text-align: left;
+  font-family: 'Roboto';
+  letter-spacing: 0px;
+  color: #8b94b4;
+  opacity: 1;
+  font-size: 16px;
+}
+.resend {
+  text-align: left;
+  text-decoration: underline;
+  font-family: 'Roboto';
+  letter-spacing: 0px;
+  color: #c4c4c4;
+  opacity: 1;
+  font-size: 16px;
+}
+// ------------------------------ballot-ready-prep-error-page--------------------------------
+.Report-A-Problem-btn {
+  margin-top: 20px;
+}
+.ballot-btns {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+// -----------------sending-confirmation-page----------------------------------------------
+.sending-page-text {
+  h2 {
+    margin-top: 20px;
+  }
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  h4 {
+    margin-bottom: 20px;
+  }
+}
+.cir-icon {
+  font-size: 65px;
+  padding-top: 4%;
+  padding-bottom: 10px;
+}
+.icon-in-center {
+  text-align: center;
+}
+ion-footer {
+  .ion-toolbar-btn-in-center {
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+}
+// ----------------------------test-results-page--------------------------------------
+
+.div-text-mid {
+  text-align: center;
+  ion-icon {
+    font-size: 11vh;
+  }
+}
+.add-question {
+  ion-row {
+    text-align: center;
+    margin-top: 30px;
+
+    .question-icon {
+      font-size: 20px;
+      padding-top: 17px;
+      text-align: end;
+    }
+    .question-text {
+      text-align: start;
+    }
+  }
+}
+// -------------------------cannot-see-ballot-page----------------------------
+.cannot-see-ballot-css h3 {
+  padding-top: 35px;
+  padding-bottom: 20px;
+}
+// -------------------------sending-page---------------------------------------
+.sending-page-icon-div {
+  text-align: center;
+  padding-top: 75%;
+}
+.sending-icon {
+  font-size: 70px;
+}
+// -------------------------------before-you-page-------------------------------
+
+.before-you-page-text {
+  h3 {
+    margin-bottom: 20px;
+  }
+  h4 {
+    margin-bottom: 20px;
+  }
+}
+
+// ------------------------------------------------------------------------------
+
 .toast {
   --color: white;
   --background: #2d2d2d;
@@ -64,20 +458,13 @@ ion-button {
   text-transform: capitalize;
   --border-radius: 5px;
 }
-ion-toolbar {
-  height: 100px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 ion-col {
   padding-left: 0;
   padding-right: 0;
 }
-
-a {
-  color: #222428;
-  border: none;
-  font-size: 22px;
-  font-weight: 700;
+.margin5 {
+  margin-left: 5px;
+}
+.colorDarkBlue {
+  --background: #232c67;
 }

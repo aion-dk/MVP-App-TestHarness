@@ -1,4 +1,4 @@
-# MVP-App-TestHarness
+# MVP-App-TestHarness (aka Rosie)
 
 - [Running the Application](#running-the-application)
 - [Development workflow](#development-workflow)
@@ -9,6 +9,7 @@
   - [Unit testing](#unit-testing)
   - [E2E testing](#e2e-testing)
 - [Using local storage](#using-local-storage)
+- [Using scripts/resources.js file](#using-scripts-resources-js-file)
 
 A simple app that shows the endpoint of the workflow of the future ABC app.
 To run the current version of this app
@@ -227,4 +228,18 @@ beforeEach(
     fixture.detectChanges();
   })
 );
+```
+
+## using scripts resources js file
+
+This file is used to convert the source App Icon and Splash screen image to the target App Icon and Splash screen image size for both IOS and Android mobile's for any responsive and version's. It contains all size target and source images name in it.
+
+To run Resources manually, execute the following:
+
+```bash
+npm i cordova-res
+```
+
+```bash
+npm run resources
 ```

@@ -1,17 +1,14 @@
 <ion-content>
-  <div class="upr-text">{{results.first_para}}</div>
-  <br /><br />
-  <div class="upr-text">{{results.sec_para}}</div>
-  <br /><br /><br />
-  <ion-button color="dark" (click)="newballot()">
-    {{results.fist_btn}}
-    <ion-icon slot="end" name="reader-outline"></ion-icon> </ion-button
-  ><br /><br /><br />
-  <ion-button color="dark" (click)="requestballot()">
-    {{results.sec_btn}}
-    <ion-icon slot="end" name="mail-outline"></ion-icon>
-  </ion-button>
+  <div class="error-page">
+    <h3>{{results.first_para}}</h3>
+    <h3>{{results.sec_para}}</h3>
+    <ion-button color="dark" (click)="newballot()">
+      {{results.fist_btn}}
+      <ion-icon slot="end" name="reader-outline"></ion-icon> </ion-button
+    ><br /><br /><br />
+    <ion-button color="danger" (click)="requestballot()">
+      {{results.sec_btn}}
+      <ion-icon slot="end" name="mail-outline"></ion-icon>
+    </ion-button>
+  </div>
 </ion-content>
-<ion-footer>
-  <ion-toolbar> </ion-toolbar>
-</ion-footer>

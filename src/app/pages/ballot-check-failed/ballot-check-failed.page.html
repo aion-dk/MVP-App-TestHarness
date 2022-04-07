@@ -1,7 +1,7 @@
 <ion-content>
   <div class="upr-text">
     <p>{{results.upr_para}}</p>
-    <a href="{{results.link}}">{{results.link}}</a>
+    <div><a href="{{results.link}}">{{results.link}}</a></div>
   </div>
   <ion-button color="dark" (click)="rpbtn()">
     {{results.back}}
@@ -9,7 +9,7 @@
   </ion-button>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="ion-no-padding">
     <ion-button color="dark" slot="end" (click)="printbtn()">
       {{results.print}}
       <ion-icon slot="end" name="print-outline"></ion-icon>

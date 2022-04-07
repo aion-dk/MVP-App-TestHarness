@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-intro',
   styleUrls: ['./intro.page.scss'],
-  template: `<ion-content scroll-y="false">
+  template: `<ion-content scroll-y="false" class="nonepadding">
     <ion-slides (ionSlideReachEnd)="onSlideEnd()" [options]="slideOpts">
       <ion-slide>
         <img src="../../../assets/images/slides/slide-1.png" />

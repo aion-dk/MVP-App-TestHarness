@@ -1,16 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <h1 class="header-position">{{results.WhatNext}}</h1>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
-  <p class="top-text">{{results.WhatNext }}</p>
-  <div style="text-align: center">
+  <div class="icon-in-center">
     <ion-icon name="checkmark-circle-outline" class="cir-icon"></ion-icon>
-    <div class="para-center">{{results.heading}}</div>
-    <div class="mid">{{results.para_center}}</div>
-    <div class="sec-para">{{results.heading_link}}<br />{{results.btr}}</div>
-    <div class="link-last-para"><a href="">{{results.link}}</a></div>
-    <div class="thanks-sec">{{results.thanks}}</div>
+  </div>
+  <div class="sending-page-text">
+    <h2>{{results.heading}}</h2>
+    <h3>{{results.para_center}}</h3>
+    <h4>{{results.heading_link}}<br />{{results.btr}}</h4>
+    <div><a href="{{results.link}}">{{results.link}}</a></div>
+    <h2>{{results.thanks}}</h2>
   </div>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="ion-no-padding ion-toolbar-btn-in-center">
     <ion-button color="dark" (click)="continuebtn()">
       {{results.next}}
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>

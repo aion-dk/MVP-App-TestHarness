@@ -1,16 +1,20 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <h1 class="header-position">{{results.header}}</h1>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <div class="list-question">
-    <p>{{results.header}}</p>
-  </div>
-  <p>{{results.textD}}</p>
-  <p>{{results.link_www}}</p>
-  <ion-row><p>{{results.tyABC}}</p></ion-row>
+  <h3>{{results.textD}}</h3>
+  <h4>{{results.link_www}}</h4>
+  <ion-row><h2>{{results.tyABC}}</h2></ion-row>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
     <ion-row>
-      <ion-col style="text-align: start" class="back-btn">
-        <ion-button color="dark" (click)="  goToFinish()"> {{results.finish}} </ion-button>
+      <ion-col class="ion-left-col">
+        <ion-button color="danger" (click)="  goToFinish()">
+          {{results.finish}} <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

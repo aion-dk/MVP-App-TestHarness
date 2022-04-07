@@ -18,7 +18,6 @@ describe('Voter', () => {
 
     cy.contains('app-ballot-form ion-button', 'Start').click();
     cy.wait(pageTransitionDuration);
-    cy.contains('app-ballot-complete', 'Your ballot is complete').should('be.visible');
     cy.contains('app-ballot-complete', 'Choose A Return').should('be.visible');
 
     cy.contains('app-ballot-complete .bottom-div-text', 'Digital Return').click();
@@ -43,7 +42,7 @@ describe('Voter', () => {
     cy.wait(pageTransitionDuration);
     cy.contains('app-ballot-fingerprint', 'Your Ballot Is Sealed').should('be.visible');
 
-    cy.contains('app-ballot-fingerprint ion-button', 'Cast Ballot Now').click();
+    cy.contains('app-ballot-fingerprint ion-button', 'Submit Ballot Now').click();
     cy.wait(pageTransitionDuration);
     cy.contains('app-sending-confirmation', 'Congrats! Your ballot has been sent!').should('be.visible');
   });

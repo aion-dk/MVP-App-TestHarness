@@ -104,7 +104,9 @@ export class BallotCompletePage implements OnInit {
     ]);
   }
 
-  ballotReturnChoice() {
+  ballotReturnChoice(choice) {
+    const voterChoice = choice;
+    localStorage.setItem('voterChoiceForChooseReturn', JSON.stringify(voterChoice));
     // this method previously created a constant which was never used
     // todo: figure out what the original intent was and implement it
   }

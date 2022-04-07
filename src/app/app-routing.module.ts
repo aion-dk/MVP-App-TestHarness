@@ -134,11 +134,6 @@ const routes: Routes = [
       import('./pages/corrupt_cv_construct00008_error/ballot-oops-screen.module').then((m) => m.BallotOopsScreenPageModule),
   },
   {
-    path: 'check-network-oooo-error',
-    loadChildren: () =>
-      import('./pages/check-network-oooo-error/check-network-oooo-error.module').then((m) => m.CheckNetworkOOOOErrorPageModule),
-  },
-  {
     path: 'test-results-faild-error',
     loadChildren: () =>
       import('./pages/test-results-faild-error/test-results-faild-error.module').then((m) => m.TestResultsFaildErrorPageModule),
@@ -156,11 +151,6 @@ const routes: Routes = [
       import('./pages/test-results-ballot-prep-error/test-results-ballot-prep-error.module').then(
         (m) => m.TestResultsBallotPrepErrorPageModule
       ),
-  },
-  {
-    path: 'network-error-request-code',
-    loadChildren: () =>
-      import('./pages/network-error-request-code/network-error-request-code.module').then((m) => m.NetworkErrorRequestCodePageModule),
   },
   {
     path: 'ballot-ready-prep-error',
@@ -220,6 +210,10 @@ const routes: Routes = [
     // eslint-disable-next-line sonarjs/no-identical-functions
     loadChildren: () =>
       import('./pages/ballot-test-failed-test/ballot-test-failed-test.module').then((m) => m.BallotTestFailedTestPageModule),
+  },
+  {
+    path: 'cannot-see-ballot',
+    loadChildren: () => import('./pages/cannot-see-ballot/cannot-see-ballot.module').then((m) => m.CannotSeeBallotPageModule),
   },
 ];
 

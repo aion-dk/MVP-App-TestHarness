@@ -1,31 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{results.header}}</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <h1 class="header-position">{{results.header}}</h1>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   <ion-row>
-    <ion-col size="6" class="back-btn">
-      <ion-button color="dark" (click)=" failsbtn()">
-        {{results.fail_check_network}}
-        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-      </ion-button>
-    </ion-col>
-    <ion-col size="6" class="back-btn">
-      <ion-button color="dark" (click)=" fail2btn()">
-        {{results.fail_check_server}}
-        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-      </ion-button>
-    </ion-col>
-    <ion-col size="6" class="next-btn">
-      <ion-button color="dark" (click)="confirm()">
-        {{results.pass}}
-
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-button>
-    </ion-col>
+    <br /><br />
+    <ion-button color="medium" (click)=" failsbtn()">
+      {{results.fail_check_network}}
+      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <br /><br /><br /><br />
+    <ion-button color="danger" (click)=" fail2btn()">
+      {{results.fail_check_server}}
+      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+    </ion-button>
   </ion-row>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar> </ion-toolbar>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row>
+      <ion-col size="6" class="ion-left-col"> </ion-col>
+      <ion-col size="6" class="ion-right-col">
+        <ion-button color="dark" (click)="confirm()">
+          {{results.pass}}
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-footer>

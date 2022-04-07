@@ -44,6 +44,10 @@ export class BallotFingerprintPage implements OnInit {
       });
   }
 
+  rpbtn() {
+    this.route.navigate(['/tobecontinue']);
+  }
+
   sendbtn() {
     this.affidavit = this.voterartifactsService.affidavit;
     this.drClientService

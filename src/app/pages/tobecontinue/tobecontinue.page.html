@@ -1,15 +1,17 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <h1 class="header-position">{{results.tbc}}</h1>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <div class="list-question">
-    <p>{{results.tbc}}</p>
-  </div>
-  <p>{{results.ty_ta}}</p>
-  <p>{{results.detail}}</p>
+  <h2>{{results.ty_ta}}</h2>
+  <h3>{{results.detail}}</h3>
 </ion-content>
 <ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-row>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row class="ion-footer-row">
       <ion-col size="6" class="back-btn"> </ion-col>
-      <ion-col size="6" class="next-btn">
+      <ion-col size="6" class="ion-right-col">
         <ion-button color="dark" (click)="reloadCurrentPage()">
           {{results.reset}}
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>

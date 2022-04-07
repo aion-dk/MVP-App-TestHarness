@@ -1,29 +1,29 @@
 <ion-content>
-  <div class="Required-div">
-    <p>
+  <div class="error-page">
+    <h3>
       {{results.text}}<br /><br />
       {{results.text1}}<br />
       <br />
       {{results.test_pr}}<br /><br />
       {{results.text2}} <br />
-    </p>
+    </h3>
   </div>
-  <ion-button style="padding-left: 20px" color="dark" (click)="reportbtn()">
+  <ion-button color="medium" (click)="reportbtn()">
     {{results.report_prob}}
     <ion-icon slot="end" name="help-outline"></ion-icon>
   </ion-button>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="ion-no-padding">
     <ion-row>
-      <ion-col size="6" class="back-btn" style="text-align: start">
-        <ion-button color="dark" (click)="tryBtn()">
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" class="ion-btn-size" (click)="tryBtn()">
           {{results.try_again}}
           <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="next-btn">
-        <ion-button color="dark" (click)="nextprint()">
+      <ion-col size="6" class="ion-right-col">
+        <ion-button color="dark" class="ion-btn-size" (click)="nextprint()">
           {{results.print}}
           <ion-icon slot="end" name="print-outline"></ion-icon>
         </ion-button>

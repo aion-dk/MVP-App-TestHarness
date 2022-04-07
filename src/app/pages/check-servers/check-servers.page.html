@@ -1,18 +1,18 @@
 <ion-content>
-  <div class="Required-div">
-    <p>
-      {{results.text}}<br /><br />
-      {{results.text1}}<br /><br />
-      {{results.text2}}<br />
-    </p>
+  <div class="error-page">
+    <h3>{{results.text}}</h3>
+    <h3>{{results.text1}}</h3>
+    <h3>{{results.text2}}</h3>
+    <div><a href="{{results.link}}">{{results.link}}</a></div>
   </div>
-  <p class="link">{{results.link}}</p>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-button color="dark" (click)="confirm()">
-      {{results.try_again}}
-      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-    </ion-button>
+<ion-footer>
+  <ion-toolbar class="ion-no-padding">
+    <ion-row>
+      <ion-button color="danger" (click)="confirm()">
+        {{results.try_again}}
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-footer>

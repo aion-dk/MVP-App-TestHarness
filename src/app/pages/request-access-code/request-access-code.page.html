@@ -1,20 +1,20 @@
 <ion-content padding>
-  <div style="text-align: center; padding-top: 25px">
-    <div class="para-center">{{results.para}}</div>
-    <div class="mid">{{results.para_center}}</div>
-    <div class="link-last-para"><a href="">{{results.link}}</a></div>
+  <div class="error-page">
+    <h3>{{results.para}}</h3>
+    <h3>{{results.para_center}}</h3>
+    <div><a href="{{results.link}}">{{results.link}}</a></div>
   </div>
 </ion-content>
 <ion-footer>
-  <ion-toolbar style="text-align: end">
+  <ion-toolbar class="ion-no-padding">
     <ion-row>
-      <ion-col size="6" class="back-btn" style="text-align: start">
-        <ion-button color="dark" (click)="backbtn()">
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="danger" (click)="backbtn()">
           {{results.back}}
           <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="6" class="next-btn">
+      <ion-col size="6" class="ion-right-col">
         <ion-button color="dark" (click)="continuebtn()">
           {{results.next}}
           <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
