@@ -11,7 +11,7 @@ export class StatuscodeService {
       return 'voter record not found';
     } else if (statusCode === 'NetworkError') {
       return 'network code';
-    } else if (statusCode === 'CallOutOfOrderError') {
+    } else if (statusCode === 'InvalidStateError') {
       return 'call out of order error';
     } else if (statusCode === 'AccessCodeExpired') {
       return 'access code expired';

@@ -54,7 +54,7 @@ export class TestPage implements OnInit {
   validateAccessCodeStatic() {
     return new Promise((resolve) => {
       const code = '00002';
-      this.presentAlertEmpty(code, this.statuscodeService.statusCode('CallOutOfOrderError'));
+      this.presentAlertEmpty(code, this.statuscodeService.statusCode('InvalidStateError'));
       resolve(true);
     });
   }

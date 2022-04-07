@@ -31,7 +31,7 @@ export class TestResultsPage implements OnInit {
   passBtn() {
     this.cvr = this.voterartifactsService.cvr;
     this.drClientService
-      .constructBallotCryptograms(this.cvr)
+      .constructBallot(this.cvr)
       .then(() => {
         this.route.navigate([
           '/ballot-resealed',

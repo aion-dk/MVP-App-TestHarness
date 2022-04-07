@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding header-backgrond-color">
+    <div class="header-position">
+      <h1>{{results.check_your_pairing_code}}</h1>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>
+    <h3>{{results.cypc_1}}</h3>
+  </div>
+  <p class="centerStaticNum">{{results.xyzabc42}}</p>
+  <div>
+    <div class="add-question">
+      <ion-row>
+        <ion-col class="question-text">
+          <h3>{{results.do_pcm}}</h3>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div>
+    <ion-row class="ion-footer-row">
+      <ion-col size="6" class="ion-left-col">
+        <ion-button color="dark" (click)="yesBtn()">
+          {{results.yes}}
+          <ion-icon class="margin5" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-right-col">
+        <ion-button color="danger" (click)="tobecontinueBtn()">
+          {{results.no}}
+          <ion-icon class="margin5" name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

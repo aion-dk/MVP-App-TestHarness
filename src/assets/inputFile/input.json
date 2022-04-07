@@ -351,6 +351,14 @@
       "link_csb": "electionwebsite.gov",
       "back_btn_csb": "retry"
     },
+    "check_your_pairing_code_page": {
+      "check_your_pairing_code": "Verify Passkey",
+      "cypc_1": "Please compare the passkey displayed below to the passkey displayed on the Verify My Ballot site.",
+      "xyzabc42": "xyzabc42",
+      "do_pcm": " Does your passkey match the passkey displayed on the Verify My Ballot site?",
+      "yes": "Yes",
+      "no": "No"
+    },
 
     "provide_information": "Provide Information",
     "required": "Required",

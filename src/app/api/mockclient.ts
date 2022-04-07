@@ -10,11 +10,36 @@ export class MockClient implements IDigitalReturnClient {
   }
 
   registerVoter(): Promise<void> {
-    return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      switch (this.cachedAccessCode) {
+        case '00021':
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
+          break;
+        case '00022':
+          reject(new Error(this.statuscodeService.statusCode('InvalidTokenError')));
+          break;
+        case '00023':
+          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
+          break;
+        default:
+          resolve();
+      }
+    });
   }
 
   initialize(): Promise<void> {
-    return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      switch (this.cachedAccessCode) {
+        case '00019':
+          reject(new Error(this.statuscodeService.statusCode('InvalidConfigError')));
+          break;
+        case '00020':
+          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
+          break;
+        default:
+          resolve();
+      }
+    });
   }
 
   requestAccessCode(opaqueVoterId: string): Promise<void> {
@@ -37,7 +62,7 @@ export class MockClient implements IDigitalReturnClient {
       this.cachedAccessCode = code;
       switch (code) {
         case '00002':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
           break;
         case '00003':
           reject(new Error(this.statuscodeService.statusCode('AccessCodeExpired')));
@@ -56,11 +81,11 @@ export class MockClient implements IDigitalReturnClient {
   }
 
   // eslint-disable-next-line unused-imports/no-unused-vars
-  constructBallotCryptograms(_cvr: any): Promise<string> {
+  constructBallot(_cvr: any): Promise<string> {
     return new Promise((resolve, reject) => {
       switch (this.cachedAccessCode) {
         case '00006':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
           break;
         case '00007':
           reject(new Error(this.statuscodeService.statusCode('NetworkError')));
@@ -68,17 +93,20 @@ export class MockClient implements IDigitalReturnClient {
         case '00008':
           reject(new Error(this.statuscodeService.statusCode('CorruptCVRError')));
           break;
+        case '000024':
+          reject(new Error(this.statuscodeService.statusCode('VoterSessionTimeoutError')));
+          break;
         default:
-          resolve('zyx098-wvu765-tsr432-1234');
+          resolve('7654321');
       }
     });
   }
 
-  spoilBallotCryptograms(): Promise<void> {
+  spoilBallot(): Promise<string> {
     return new Promise((resolve, reject) => {
       switch (this.cachedAccessCode) {
         case '00009':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
           break;
         case '00010':
           reject(new Error(this.statuscodeService.statusCode('NetworkError')));
@@ -86,32 +114,64 @@ export class MockClient implements IDigitalReturnClient {
         case '00011':
           reject(new Error(this.statuscodeService.statusCode('ServerCommitmentError')));
           break;
+        case '000025':
+          reject(new Error(this.statuscodeService.statusCode('VoterSessionTimeoutError')));
+          break;
         default:
-          resolve();
+          resolve('qwerty-verifier-code');
       }
     });
   }
 
   // eslint-disable-next-line unused-imports/no-unused-vars
-  submitBallotCryptograms(_affidavit: string): Promise<any> {
+  castBallot(_affidavit: string): Promise<string> {
     return new Promise((resolve, reject) => {
       switch (this.cachedAccessCode) {
         case '00012':
           reject(new Error(this.statuscodeService.statusCode('NetworkError')));
           break;
         case '00013':
-          reject(new Error(this.statuscodeService.statusCode('CallOutOfOrderError')));
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
+          break;
+        case '000026':
+          reject(new Error(this.statuscodeService.statusCode('VoterSessionTimeoutError')));
           break;
         default:
-          resolve({
-            previousBoardHash: 'tsr432-wvu765-zyx098-4321',
-            boardHash: 'zyx098-wvu765-tsr432-1234',
-            registeredAt: '2020-03-01T10:00:00.000+01:00',
-            serverSignature:
-              // eslint-disable-next-line max-len
-              'dbcce518142b8740a5c911f727f3c02829211a8ddfccabeb89297877e4198bc1,46826ddfccaac9ca105e39c8a2d015098479624c411b4783ca1a3600daf4e8fa',
-            voteSubmissionId: '6',
-          });
+          resolve('ballot-tracking-code');
+      }
+    });
+  }
+
+  // Should be called right after 'spoilBallot'
+  waitForVerifierRegistration(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      switch (this.cachedAccessCode) {
+        case '00014':
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
+          break;
+        case '00015':
+          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
+          break;
+        case '00016':
+          reject(new Error(this.statuscodeService.statusCode('TimeoutError')));
+          break;
+        default:
+          resolve('1234567');
+      }
+    });
+  }
+
+  challengeBallot(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      switch (this.cachedAccessCode) {
+        case '00017':
+          reject(new Error(this.statuscodeService.statusCode('InvalidStateError')));
+          break;
+        case '00018':
+          reject(new Error(this.statuscodeService.statusCode('NetworkError')));
+          break;
+        default:
+          resolve();
       }
     });
   }

@@ -215,6 +215,11 @@ const routes: Routes = [
     path: 'cannot-see-ballot',
     loadChildren: () => import('./pages/cannot-see-ballot/cannot-see-ballot.module').then((m) => m.CannotSeeBallotPageModule),
   },
+  {
+    path: 'check-your-pairing-codes',
+    loadChildren: () =>
+      import('./pages/check-your-pairing-codes/check-your-pairing-codes.module').then((m) => m.CheckYourPairingCodesPageModule),
+  },
 ];
 
 @NgModule({

@@ -11,9 +11,11 @@ export interface IDigitalReturnClient {
   requestAccessCode(opaqueVoterId: string, email: string): Promise<void>;
   validateAccessCode(code: string): Promise<void>;
   registerVoter(): Promise<void>;
-  constructBallotCryptograms(cvr: any): Promise<string>;
-  spoilBallotCryptograms(): Promise<void>;
-  submitBallotCryptograms(affidavit: any): Promise<any>;
+  constructBallot(cvr: any): Promise<string>;
+  spoilBallot(): Promise<string>;
+  waitForVerifierRegistration(): Promise<string>;
+  castBallot(affidavit: any): Promise<string>;
+  challengeBallot(): Promise<void>;
   purgeData(): void;
 }
 
@@ -51,17 +53,25 @@ export class DrClientService {
     await this.client.registerVoter();
   }
 
-  constructBallotCryptograms(nistCvr: string): Promise<string> {
+  constructBallot(nistCvr: string): Promise<string> {
     // todo: handle nist conversion as necessary, for now we just pass the nist CVR
-    return this.client.constructBallotCryptograms(nistCvr);
+    return this.client.constructBallot(nistCvr);
   }
 
-  spoilBallotCryptograms(): Promise<void> {
-    return this.client.spoilBallotCryptograms();
+  spoilBallot(): Promise<string> {
+    return this.client.spoilBallot();
   }
 
-  submitBallotCryptograms(affidavit: string): Promise<any> {
-    return this.client.submitBallotCryptograms(affidavit);
+  waitForVerifierRegistration(): Promise<string> {
+    return this.client.waitForVerifierRegistration();
+  }
+
+  castBallot(affidavit: string): Promise<string> {
+    return this.client.castBallot(affidavit);
+  }
+
+  challengeBallot(): Promise<void> {
+    return this.client.challengeBallot();
   }
 
   purgeData() {
