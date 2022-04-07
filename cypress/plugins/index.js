@@ -19,4 +19,17 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    // `args` is an array of all the arguments that will
+    // be passed to browsers when it launches
+    console.log(launchOptions.args) // print all current args
+
+    if (browser.family === 'chromium' && browser.name !== 'electron') {
+      // auto open devtools
+      launchOptions.args.push('--no-sandbox')
+    }
+
+    // whatever you return here becomes the launchOptions
+    return launchOptions
+  })
 };

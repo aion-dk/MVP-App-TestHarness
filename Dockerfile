@@ -8,7 +8,7 @@ COPY package*.json ./
 
 RUN npm install
 
-ENV CHROME_BIN "/usr/bin/chromium"
+ENV CHROME_BIN "/usr/bin/chromium-browser"
 
 COPY . .
 
