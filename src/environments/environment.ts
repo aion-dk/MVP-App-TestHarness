@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url: 'http://localhost:3000/',
+  production: true,
+  url: 'http://avx:3000/dbb/oset/api',
 };
 
 /*

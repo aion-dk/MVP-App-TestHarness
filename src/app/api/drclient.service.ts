@@ -1,9 +1,10 @@
+import { AVClient, IAVClient } from '@aion-dk/js-client';
 import { Injectable } from '@angular/core';
 
 import { StatuscodeService } from 'src/app/api/statuscode.service';
 import { VoterartifactsService } from 'src/app/api/voterartifacts.service';
 import { UserService } from 'src/app/class/user/user.service';
-import { MockClient } from './mockclient';
+import { environment } from 'src/environments/environment';
 
 // todo: replace anys in favor of real types
 export interface IDigitalReturnClient {
@@ -24,7 +25,7 @@ export interface IDigitalReturnClient {
 })
 export class DrClientService {
   serverURL: any;
-  client: IDigitalReturnClient;
+  client: IAVClient;
 
   constructor(
     public statuscodeService: StatuscodeService,
@@ -38,7 +39,7 @@ export class DrClientService {
       this.voterartifactsService.initialize(this.userService.getUser().lastName);
     } // to be added: other initializer calls included the one deprecated below
 
-    this.client = new MockClient(this.statuscodeService);
+    this.client = new AVClient(environment.url);
   }
 
   async requestAccessCode(opaqueVoterId: string): Promise<void> {
