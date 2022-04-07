@@ -60,7 +60,7 @@ describe('DrClientService', () => {
     });
   });
 
-  describe('constructBallotCryptograms', () => {
+  describe('constructBallot', () => {
     it('should reject 00006', async () => {
       service.validateAccessCode('00006');
       await expectAsync(service.constructBallot(PRECINCT_2_CVR)).toBeRejectedWith(new Error(callOutOfOrder));
@@ -75,11 +75,11 @@ describe('DrClientService', () => {
     });
     it('should resolve any other acceptable ID', async () => {
       service.validateAccessCode('00009');
-      await expectAsync(service.constructBallot(PRECINCT_2_CVR)).toBeResolvedTo('zyx098-wvu765-tsr432-1234');
+      await expectAsync(service.constructBallot(PRECINCT_2_CVR)).toBeResolvedTo('7654321');
     });
   });
 
-  describe('spoilBallotCryptograms', () => {
+  describe('spoilBallot', () => {
     it('should reject 00009', async () => {
       service.validateAccessCode('00009');
       await expectAsync(service.spoilBallot()).toBeRejectedWith(new Error(callOutOfOrder));
@@ -98,7 +98,7 @@ describe('DrClientService', () => {
     });
   });
 
-  describe('submitBallotCryptograms', () => {
+  describe('castBallot', () => {
     it('should reject 00012', async () => {
       service.validateAccessCode('00012');
       await expectAsync(service.castBallot(PRECINCT_2_AFFIDAVIT)).toBeRejectedWith(new Error(networkCode));
