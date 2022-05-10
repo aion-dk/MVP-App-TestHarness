@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  url: 'http://avx:3000/dbb/oset/api',
+  url: 'http://dbb:3003/oset',
 };
 
 /*
