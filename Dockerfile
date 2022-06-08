@@ -1,12 +1,12 @@
-FROM node:16.4.2-alpine
+FROM node:16.15.2-alpine
 
 WORKDIR /usr/src/app
 
-RUN apk add build-base python3 make chromium chromium-chromedriver
+RUN apk add curl
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install #&& npm install -g @angular/cli@latest
 
 ENV CHROME_BIN "/usr/bin/chromium-browser"
 
